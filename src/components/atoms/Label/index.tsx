@@ -1,9 +1,14 @@
 import React from 'react';
 
-const Label: React.FC = () => {
+type LabelProps = {
+    value : string,
+    isChecked? : boolean
+}
+
+const Label: React.FC<LabelProps> = ({value, isChecked} : LabelProps) => {
     return(
-        <div>
-            LABEL
+        <div style={isChecked ? {textDecoration:"line-through"} : {}}>
+            {value}
         </div>
     );
 }

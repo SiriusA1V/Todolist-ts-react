@@ -4,14 +4,15 @@ import Textarea from '../../atoms/Textarea'
 
 type SetListProps = {
     onChangeTTA : (val : string) => void,
-    onClickBT : () => void
+    onClickBT : () => void,
+    isBtDisabled? : boolean
 }
 
-const SetList: React.FC<SetListProps> = ({onChangeTTA, onClickBT} : SetListProps) => {
+const SetList: React.FC<SetListProps> = ({onChangeTTA, onClickBT, isBtDisabled} : SetListProps) => {
     return(
         <div>
             <Textarea onChange={onChangeTTA}/>
-            <Button onClick={onClickBT}></Button>
+            <Button onClick={onClickBT} isDisabled={isBtDisabled}></Button>
         </div>
     )
 }

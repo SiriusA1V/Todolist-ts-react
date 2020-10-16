@@ -3,46 +3,50 @@ import List from '../../components/molecules/List'
 import SetList from '../../components/molecules/SetList'
 
 type checkType = {
-    isCheck : true | false
+    isCheck : boolean,
+    LabelTXT : string
 }
 
 const Top: React.FC = () => {
-    const [list_count, setCount] = useState("")
-    const [isCheckedL, setCheck] = useState(Array<checkType>())
+    const [LabelTXT, setLabel] = useState("")
+    const [listItem, setCheck] = useState(Array<checkType>())
+    const [isBtDisabled, setBtDisabled] = useState(true)
 
     const onChangeCheck = (isChecked : boolean, idx : number): void => {
-        const c = [...isCheckedL]
+        const c = [...listItem]
         c[idx].isCheck = isChecked
         setCheck(c);
     }
 
     const onChangeText = (changeText : string) => {
-        setCount(changeText)
+        if(changeText.length > 0){
+            setBtDisabled(false)
+        }else{
+            setBtDisabled(true)
+        }
+
+        setLabel(changeText)
     }
 
     const onClickBT = () => {
-        const c = []
+        const c = [...listItem]
 
-        if((/^[0-9]*$/).test(list_count)){
-            for(let i = 0; i < Number(list_count); i++){
-                c.push({isCheck : false})
-            }
-        }else{
-            alert("定数を入れてください。")
-        }
+        c.push({isCheck : false, LabelTXT : LabelTXT})
 
         setCheck(c)
     }
 
     return (
         <div>
-            <SetList onChangeTTA={onChangeText} onClickBT={onClickBT}></SetList>
+            <SetList onChangeTTA={onChangeText} onClickBT={onClickBT} isBtDisabled={isBtDisabled} ></SetList>
 
-            {Object.keys(isCheckedL).map(idx => {
+            {Object.keys(listItem).map(idx => {
                return (<List 
                         checkChange={(changeText: boolean): void => {onChangeCheck(changeText, Number(idx))}} 
                         key={idx} 
-                        isChecked={isCheckedL[Number(idx)].isCheck
+                        lbValue={listItem[Number(idx)].LabelTXT}
+                        boundCheck={listItem[Number(idx)].isCheck}
+                        isChecked={listItem[Number(idx)].isCheck
                         }></List>) 
             })}
         </div>
