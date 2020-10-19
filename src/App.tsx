@@ -1,12 +1,12 @@
 import React from 'react'
-import Top from "./pages/Top"
+import Top from './pages/Top'
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div >
-      <Top></Top>
-    </div >
-  );
+    <div>
+      <Top />
+    </div>
+  )
 }
 
-export default App;
+export default App

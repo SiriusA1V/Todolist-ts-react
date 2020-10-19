@@ -4,18 +4,24 @@ import Textarea from '../../atoms/Textarea'
 import styles from './style.module.scss'
 
 type SetListProps = {
-    onChangeTTA: (val: string) => void,
-    onClickBT: () => void,
-    isBtDisabled?: boolean
+  onChangeTextarea: (val: string) => void
+  onSubmit: () => void
+  isButtonDisabled?: boolean
+  textareaValue: string
 }
 
-const SetList: React.FC<SetListProps> = ({ onChangeTTA, onClickBT, isBtDisabled }: SetListProps) => {
-    return (
-        <div className={styles.container}>
-            <Textarea onChange={onChangeTTA} />
-            <Button onClick={onClickBT} isDisabled={isBtDisabled}></Button>
-        </div>
-    )
+const SetList: React.FC<SetListProps> = ({
+  onChangeTextarea,
+  onSubmit,
+  isButtonDisabled,
+  textareaValue
+}: SetListProps) => {
+  return (
+    <div className={styles.container}>
+      <Textarea onChange={onChangeTextarea} textareaValue={textareaValue} />
+      <Button onClick={onSubmit} isDisabled={isButtonDisabled} />
+    </div>
+  )
 }
 
 export default SetList

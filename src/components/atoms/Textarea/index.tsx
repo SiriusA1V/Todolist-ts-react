@@ -1,29 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './style.module.scss'
 
 type TextAreaProps = {
-    onChange?: (val: string) => void,
+  onChange?: (val: string) => void
+  textareaValue: string
 }
 
-const Textarea: React.FC<TextAreaProps> = ({ onChange }: TextAreaProps) => {
-    const [tval, setTval] = useState("")
-    const handleChanged = (e: React.ChangeEvent<HTMLInputElement>): void => {
-        const val = e.target.value
-        setTval(val)
-        if (onChange) {
-            onChange(val)
-        }
+const Textarea: React.FC<TextAreaProps> = ({ onChange, textareaValue }: TextAreaProps) => {
+  const handleChanged = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const val = e.target.value
+    if (onChange) {
+      onChange(val)
     }
+  }
 
-    return (
-        <input
-            type="text"
-            onChange={handleChanged}
-            value={tval}
-            className={styles.textarea}
-            placeholder="new Task"
-        />
-    )
+  return (
+    <input
+      type="text"
+      onChange={handleChanged}
+      value={textareaValue}
+      className={styles.textarea}
+      placeholder="new Task"
+    />
+  )
 }
 
 export default Textarea
