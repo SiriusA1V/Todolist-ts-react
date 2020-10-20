@@ -4,20 +4,20 @@ import Textarea from '../../atoms/Textarea'
 import styles from './style.module.scss'
 
 type SetListProps = {
-  onSubmit: (lableTxt: string) => void
+  onSubmit: (labelTxt: string) => void
 }
 
 const SetList: React.FC<SetListProps> = ({
   onSubmit,
 }: SetListProps) => {
   const [isButtonDisabled, setButtonDisabled] = useState(true)
-  const [lableTxt, setLabel] = useState('')
+  const [labelTxt, setLabel] = useState('')
 
   const handleSubmitButton = (): void => {
     setLabel("")
 
     setButtonDisabled(true)
-    onSubmit(lableTxt)
+    onSubmit(labelTxt)
   }
   const handleChangeText = (changeText: string): void => {
     if (changeText.length > 0) {
@@ -31,7 +31,7 @@ const SetList: React.FC<SetListProps> = ({
 
   return (
     <div className={styles.container}>
-      <Textarea onChange={handleChangeText} textareaValue={lableTxt} />
+      <Textarea onChange={handleChangeText} textareaValue={labelTxt} />
       <Button onClick={handleSubmitButton} isDisabled={isButtonDisabled} />
     </div>
   )

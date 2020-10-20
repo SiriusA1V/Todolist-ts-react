@@ -18,11 +18,11 @@ const List: React.FC<CheckBoxProps> = ({
   onClickDelButton,
 }: CheckBoxProps) => {
   return (
-    <div className={styles.container}>
+    <li className={styles.listItem}>
       <DelListBT onClick={onClickDelButton} />
       <CheckBox onChanged={checkChange} isChecked={isChecked} />
       <Label value={lbValue} isChecked={isChecked} />
-    </div>
+    </li>
   )
 }
 

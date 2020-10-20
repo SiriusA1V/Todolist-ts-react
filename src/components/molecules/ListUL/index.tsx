@@ -39,7 +39,7 @@ const ListULProps: React.FC<ListULProps> = ({
                             handleChangeCheck(changeText, Number(idx))
                         }}
                         key={val.id}
-                        lbValue={val.LabelTXT}
+                        lbValue={val.LabelTxt}
                         isChecked={val.isCheck}
                         onClickDelButton={(): void => handleClickDelButton(Number(idx))}
                     />

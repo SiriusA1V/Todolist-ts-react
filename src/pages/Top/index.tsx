@@ -13,12 +13,15 @@ const Top: React.FC = () => {
   const [listItems, setListItems] = useState(Array<checkType>())
   const [listItemsID, setListItemsID] = useState(0)
 
-  const handleSubmitButton = (lableTxt: string): void => {
+  const handleSubmitButton = (labelTxt: string): void => {
     const c = [...listItems]
 
-    c.push({ isCheck: false, LabelTxt: lableTxt, id: listItemsID })
+    c.push({ isCheck: false, LabelTxt: labelTxt, id: listItemsID })
 
     setListItemsID(listItemsID + 1)
+
+    console.log(c)
+
     setListItems(c)
   }
 
@@ -26,7 +29,7 @@ const Top: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.setlist_cnt}>
         <SetList
-          onSubmit={(lableTxt: string): void => handleSubmitButton(lableTxt)}
+          onSubmit={(labelTxt: string): void => handleSubmitButton(labelTxt)}
         />
       </div>
 

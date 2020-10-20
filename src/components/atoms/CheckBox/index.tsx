@@ -24,7 +24,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
       type="checkbox"
       checked={isChecked}
       onChange={handleChange}
-      className={styles.CheckBox}
+      className={styles.checkbox}
     />
   )
 }
