@@ -1,25 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '../../atoms/Button'
 import Textarea from '../../atoms/Textarea'
 import styles from './style.module.scss'
 
 type SetListProps = {
-  onChangeTextarea: (val: string) => void
-  onSubmit: () => void
-  isButtonDisabled?: boolean
-  textareaValue: string
+  onSubmit: (lableTxt: string) => void
 }
 
 const SetList: React.FC<SetListProps> = ({
-  onChangeTextarea,
   onSubmit,
-  isButtonDisabled,
-  textareaValue
 }: SetListProps) => {
+  const [isButtonDisabled, setButtonDisabled] = useState(true)
+  const [lableTxt, setLabel] = useState('')
+
+  const handleSubmitButton = (): void => {
+    setLabel("")
+
+    setButtonDisabled(true)
+    onSubmit(lableTxt)
+  }
+  const handleChangeText = (changeText: string): void => {
+    if (changeText.length > 0) {
+      setButtonDisabled(false)
+    } else {
+      setButtonDisabled(true)
+    }
+
+    setLabel(changeText)
+  }
+
   return (
     <div className={styles.container}>
-      <Textarea onChange={onChangeTextarea} textareaValue={textareaValue} />
-      <Button onClick={onSubmit} isDisabled={isButtonDisabled} />
+      <Textarea onChange={handleChangeText} textareaValue={lableTxt} />
+      <Button onClick={handleSubmitButton} isDisabled={isButtonDisabled} />
     </div>
   )
 }

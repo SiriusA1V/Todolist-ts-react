@@ -1,17 +1,17 @@
 import React from 'react'
 import List from '../../molecules/List'
 
-type ListUL = {
+type ListULProps = {
     onCheckChange?: (items: any[]) => void
     onClickDelButton?: (items: any[]) => void
     items: any[]
 }
 
-const ListUL: React.FC<ListUL> = ({
+const ListULProps: React.FC<ListULProps> = ({
     onCheckChange,
     onClickDelButton,
     items
-}: ListUL) => {
+}: ListULProps) => {
     const handleChangeCheck = (isChecked: boolean, idx: number): void => {
         const c = [...items]
         c[idx].isCheck = isChecked
@@ -49,4 +49,4 @@ const ListUL: React.FC<ListUL> = ({
     )
 }
 
-export default ListUL
+export default ListULProps
