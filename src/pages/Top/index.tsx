@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SetList from '../../components/molecules/SetList'
 import styles from './style.module.scss'
-import ListUL from '../../components/molecules/ListUL'
+import TodoList from '../../components/molecules/TodoList'
 
 type checkType = {
   id: number
@@ -34,8 +34,8 @@ const Top: React.FC = () => {
       </div>
 
       <div className={styles.list_cnt}>
-        <div className={styles.listItemJ_cnt}>
-          <ListUL
+        <div className={styles.listItem_cnt}>
+          <TodoList
             onCheckChange={(items: any[]): void => setListItems(items)}
             onClickDelButton={(items: any[]): void => setListItems(items)}
             items={listItems}

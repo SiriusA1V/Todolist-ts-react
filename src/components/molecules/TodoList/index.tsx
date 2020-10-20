@@ -1,17 +1,17 @@
 import React from 'react'
-import List from '../../molecules/List'
+import TodoListItem from '../TodoListItem'
 
-type ListULProps = {
+type TodoListProps = {
     onCheckChange?: (items: any[]) => void
     onClickDelButton?: (items: any[]) => void
     items: any[]
 }
 
-const ListULProps: React.FC<ListULProps> = ({
+const TodoList: React.FC<TodoListProps> = ({
     onCheckChange,
     onClickDelButton,
     items
-}: ListULProps) => {
+}: TodoListProps) => {
     const handleChangeCheck = (isChecked: boolean, idx: number): void => {
         const c = [...items]
         c[idx].isCheck = isChecked
@@ -34,7 +34,7 @@ const ListULProps: React.FC<ListULProps> = ({
         <ul>
             {items.map((val, idx) => {
                 return (
-                    <List
+                    <TodoListItem
                         checkChange={(changeText: boolean): void => {
                             handleChangeCheck(changeText, Number(idx))
                         }}
@@ -49,4 +49,4 @@ const ListULProps: React.FC<ListULProps> = ({
     )
 }
 
-export default ListULProps
+export default TodoList

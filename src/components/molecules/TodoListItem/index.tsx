@@ -4,19 +4,19 @@ import Label from '../../atoms/Label'
 import styles from './style.module.scss'
 import DelListBT from '../../atoms/DelListButton'
 
-type CheckBoxProps = {
+type TodoListItemProps = {
   checkChange?: (isChecked: boolean) => void
   onClickDelButton: () => void
   isChecked: boolean
   lbValue: string
 }
 
-const List: React.FC<CheckBoxProps> = ({
+const TodoListItem: React.FC<TodoListItemProps> = ({
   checkChange,
   isChecked,
   lbValue,
   onClickDelButton,
-}: CheckBoxProps) => {
+}: TodoListItemProps) => {
   return (
     <li className={styles.listItem}>
       <DelListBT onClick={onClickDelButton} />
@@ -26,4 +26,4 @@ const List: React.FC<CheckBoxProps> = ({
   )
 }
 
-export default List
+export default TodoListItem
