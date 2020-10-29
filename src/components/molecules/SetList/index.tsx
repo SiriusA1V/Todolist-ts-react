@@ -7,14 +7,12 @@ type SetListProps = {
   onSubmit: (labelTxt: string) => void
 }
 
-const SetList: React.FC<SetListProps> = ({
-  onSubmit,
-}: SetListProps) => {
+const SetList: React.FC<SetListProps> = ({ onSubmit }: SetListProps) => {
   const [isButtonDisabled, setButtonDisabled] = useState(true)
   const [labelTxt, setLabel] = useState('')
 
   const handleSubmitButton = (): void => {
-    setLabel("")
+    setLabel('')
 
     setButtonDisabled(true)
     onSubmit(labelTxt)

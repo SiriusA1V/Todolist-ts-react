@@ -6,7 +6,10 @@ type TextAreaProps = {
   textareaValue: string
 }
 
-const Textarea: React.FC<TextAreaProps> = ({ onChange, textareaValue }: TextAreaProps) => {
+const Textarea: React.FC<TextAreaProps> = ({
+  onChange,
+  textareaValue,
+}: TextAreaProps) => {
   const handleChanged = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const val = e.target.value
     if (onChange) {
