@@ -1,16 +1,18 @@
 import React from 'react'
 import styles from './style.module.scss'
 
-type DelListBTProps = {
+type DelListButtonProps = {
   onClick: () => void
 }
 
-const DelListBT: React.FC<DelListBTProps> = ({ onClick }: DelListBTProps) => {
+const DelListButton: React.FC<DelListButtonProps> = ({
+  onClick,
+}: DelListButtonProps) => {
   return (
-    <button className={styles.delListBT} onClick={onClick}>
+    <button className={styles.delListButton} onClick={onClick}>
       x
     </button>
   )
 }
 
-export default DelListBT
+export default DelListButton

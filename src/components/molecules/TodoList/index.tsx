@@ -9,15 +9,17 @@ type TodoListProps = {
     isCheck: boolean
     labelText: string
   }[]
+  className?: string
 }
 
 const TodoList: React.FC<TodoListProps> = ({
   onCheckChange,
   onClickDelButton,
   items,
+  className,
 }: TodoListProps) => {
   return (
-    <ul>
+    <ul className={className}>
       {items.map((val, idx) => {
         return (
           <TodoListItem
@@ -25,7 +27,7 @@ const TodoList: React.FC<TodoListProps> = ({
               onCheckChange(Number(idx), changeText)
             }}
             key={val.id}
-            lbValue={val.labelText}
+            labelValue={val.labelText}
             isChecked={val.isCheck}
             onClickDelButton={(): void => {
               onClickDelButton(Number(idx))

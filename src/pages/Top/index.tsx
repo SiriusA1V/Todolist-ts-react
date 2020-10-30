@@ -13,7 +13,7 @@ const Top: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.setlist_cnt}>
+      <div className={styles.setlistContainer}>
         <SetList
           onSubmit={(labelTxt: string): void => {
             dispatch(todolistSlice.actions.addList(labelTxt))
@@ -21,18 +21,17 @@ const Top: React.FC = () => {
         />
       </div>
 
-      <div className={styles.list_cnt}>
-        <div className={styles.listItem_cnt}>
-          <TodoList
-            onCheckChange={(idx, isChecked): void => {
-              dispatch(todolistSlice.actions.resetListItems({ idx, isChecked }))
-            }}
-            onClickDelButton={(idx): void => {
-              dispatch(todolistSlice.actions.delList({ idx }))
-            }}
-            items={listItems}
-          />
-        </div>
+      <div className={styles.listContainer}>
+        <TodoList
+          items={listItems}
+          className={styles.listItemContainer}
+          onCheckChange={(idx, isChecked): void => {
+            dispatch(todolistSlice.actions.resetListItems({ idx, isChecked }))
+          }}
+          onClickDelButton={(idx): void => {
+            dispatch(todolistSlice.actions.delList({ idx }))
+          }}
+        />
       </div>
     </div>
   )
