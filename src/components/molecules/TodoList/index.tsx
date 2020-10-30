@@ -2,9 +2,13 @@ import React from 'react'
 import TodoListItem from '../TodoListItem'
 
 type TodoListProps = {
-  onCheckChange?: (items: any[]) => void
-  onClickDelButton?: (items: any[]) => void
-  items: any[]
+  onCheckChange: (idx: number, isChecked: boolean) => void
+  onClickDelButton: (idx: number) => void
+  items: {
+    id: string
+    isCheck: boolean
+    labelText: string
+  }[]
 }
 
 const TodoList: React.FC<TodoListProps> = ({
@@ -12,36 +16,20 @@ const TodoList: React.FC<TodoListProps> = ({
   onClickDelButton,
   items,
 }: TodoListProps) => {
-  const handleChangeCheck = (isChecked: boolean, idx: number): void => {
-    const c = [...items]
-    c[idx].isCheck = isChecked
-
-    if (onCheckChange) {
-      onCheckChange(c)
-    }
-  }
-
-  const handleClickDelButton = (idx: number): void => {
-    const c = [...items]
-    c.splice(idx, 1)
-
-    if (onClickDelButton) {
-      onClickDelButton(c)
-    }
-  }
-
   return (
     <ul>
       {items.map((val, idx) => {
         return (
           <TodoListItem
             checkChange={(changeText: boolean): void => {
-              handleChangeCheck(changeText, Number(idx))
+              onCheckChange(Number(idx), changeText)
             }}
             key={val.id}
-            lbValue={val.LabelTxt}
+            lbValue={val.labelText}
             isChecked={val.isCheck}
-            onClickDelButton={(): void => handleClickDelButton(Number(idx))}
+            onClickDelButton={(): void => {
+              onClickDelButton(Number(idx))
+            }}
           />
         )
       })}
