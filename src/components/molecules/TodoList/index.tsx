@@ -20,7 +20,7 @@ const TodoList: React.FC<TodoListProps> = ({
 }: TodoListProps) => {
   return (
     <ul className={className}>
-      {items.map((val, idx) => {
+      {items.map((val) => {
         return (
           <TodoListItem
             checkChange={(changeText: boolean): void => {

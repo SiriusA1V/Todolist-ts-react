@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import SetList from '../../components/molecules/SetList'
 import styles from './style.module.scss'
 import TodoList from '../../components/molecules/TodoList'
-import todolistSlice from '../../feature/todolist/todolistSlice'
+import todolistSlice, {
+  getTodoList,
+} from '../../feature/todolist/todolistSlice'
 import { RootState } from '../../rootReducer'
 
 const Top: React.FC = () => {
   const dispatch = useDispatch()
   const listItems = useSelector((state: RootState) => state.todolist.listItems)
+  const apiStatus = useSelector((state: RootState) => state.todolist.apiStatus)
+
+  useEffect((): void | (() => void | undefined) => {
+    if (apiStatus === 'Initial') {
+      dispatch(getTodoList())
+    }
+  })
 
   return (
     <div className={styles.container}>
