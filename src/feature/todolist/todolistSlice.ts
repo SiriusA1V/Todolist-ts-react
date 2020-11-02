@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit'
 
+type TodoItem = {
+  id: string,
+  isCheck: boolean,
+  labelText: string
+}
+
 type State = {
-  listItems: {
-    id: string
-    isCheck: boolean
-    labelText: string
-  }[]
+  listItems: TodoItem[]
 }
 
 const initialState: State = {
@@ -29,12 +31,12 @@ const todolistSlice = createSlice({
         listItems,
       }
     },
-    resetListItems: (
+    updateChecked: (
       state,
-      { payload }: PayloadAction<{ idx: number; isChecked: boolean }>
+      { payload }: PayloadAction<{ id: string; isChecked: boolean }>
     ): State => {
       const listItems = state.listItems.map((val, i) => {
-        return i === payload.idx ? { ...val, isCheck: payload.isChecked } : val
+        return val.id === payload.id ? { ...val, isCheck: payload.isChecked } : val
       })
 
       return {
@@ -42,8 +44,8 @@ const todolistSlice = createSlice({
         listItems,
       }
     },
-    delList: (state, { payload }: PayloadAction<{ idx: number }>): State => {
-      const listItems = state.listItems.filter((val, i) => i !== payload.idx)
+    deleteList: (state, { payload }: PayloadAction<{ id: string }>): State => {
+      const listItems = state.listItems.filter((val) => val.id !== payload.id)
 
       return {
         ...state,

@@ -2,8 +2,8 @@ import React from 'react'
 import TodoListItem from '../TodoListItem'
 
 type TodoListProps = {
-  onCheckChange: (idx: number, isChecked: boolean) => void
-  onClickDelButton: (idx: number) => void
+  onCheckChange: (id: string, isChecked: boolean) => void
+  onClickDelButton: (id: string) => void
   items: {
     id: string
     isCheck: boolean
@@ -24,13 +24,13 @@ const TodoList: React.FC<TodoListProps> = ({
         return (
           <TodoListItem
             checkChange={(changeText: boolean): void => {
-              onCheckChange(Number(idx), changeText)
+              onCheckChange(val.id, changeText)
             }}
             key={val.id}
             labelValue={val.labelText}
             isChecked={val.isCheck}
             onClickDelButton={(): void => {
-              onClickDelButton(Number(idx))
+              onClickDelButton(val.id)
             }}
           />
         )

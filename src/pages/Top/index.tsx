@@ -25,11 +25,11 @@ const Top: React.FC = () => {
         <TodoList
           items={listItems}
           className={styles.listItemContainer}
-          onCheckChange={(idx, isChecked): void => {
-            dispatch(todolistSlice.actions.resetListItems({ idx, isChecked }))
+          onCheckChange={(id, isChecked): void => {
+            dispatch(todolistSlice.actions.updateChecked({ id, isChecked }))
           }}
-          onClickDelButton={(idx): void => {
-            dispatch(todolistSlice.actions.delList({ idx }))
+          onClickDelButton={(id): void => {
+            dispatch(todolistSlice.actions.deleteList({ id }))
           }}
         />
       </div>
