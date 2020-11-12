@@ -1,7 +1,7 @@
 import React from 'react'
 import Top from './pages/Top'
 
-//App
+//Appp
 const App: React.FC = () => {
   return (
     <div>
